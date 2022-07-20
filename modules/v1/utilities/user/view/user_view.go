@@ -1,6 +1,7 @@
 package view
 
 import (
+	"net/http"
 	"smartvoting/modules/v1/utilities/user/repository"
 	"smartvoting/modules/v1/utilities/user/service"
 
@@ -24,5 +25,6 @@ func View(db *gorm.DB) *userView {
 }
 
 func (h *userView) Index(c *gin.Context) {
-
+	title := "Dashboard"
+	c.HTML(http.StatusOK, "dashboard.html", gin.H{"title": title})
 }

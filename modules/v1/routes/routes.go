@@ -3,7 +3,6 @@ package routes
 import (
 	"smartvoting/app/config"
 	userViewV1 "smartvoting/modules/v1/utilities/user/view"
-	basic "smartvoting/pkg/basic_auth"
 
 	"github.com/gin-gonic/gin"
 	"gorm.io/gorm"
@@ -24,8 +23,9 @@ func Init(db *gorm.DB, conf config.Conf, router *gin.Engine) *gin.Engine {
 	//userHandlerV1 := userHandlerV1.Handler(db)
 	userViewV1 := userViewV1.View(db)
 	// Routing Website Service
-	general := router.Group("/", basic.Auth(conf))
+	general := router.Group("/")
 	general.GET("/", userViewV1.Index)
+	//general.GET("/login", userViewV1.Login)
 
 	//Routing API Service
 	// api := router.Group("/api/v1")

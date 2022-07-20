@@ -30,6 +30,6 @@ func Render(templatesDir string) multitemplate.Renderer {
 
 func ManualRender(tmpDir string) multitemplate.Renderer {
 	r := multitemplate.NewRenderer()
-	r.AddFromFiles("product", tmpDir+"product/product_index.html", tmpDir+"layouts/base.html")
+	//r.AddFromFiles("dashboard", tmpDir+"main_page/dashboard.html", tmpDir+"layouts/base.html")
 	return r
 }
