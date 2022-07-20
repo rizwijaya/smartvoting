@@ -26,6 +26,7 @@ func Init(db *gorm.DB, conf config.Conf, router *gin.Engine) *gin.Engine {
 	general := router.Group("/")
 	general.GET("/", userViewV1.Index)
 	general.GET("/dashboard", userViewV1.Dashboard)
+	general.GET("/login", userViewV1.Login)
 
 	//Routing API Service
 	//api := router.Group("/api/v1")

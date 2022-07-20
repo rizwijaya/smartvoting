@@ -29,7 +29,12 @@ func (h *userView) Index(c *gin.Context) {
 	c.HTML(http.StatusOK, "dashboard.html", gin.H{"title": title})
 }
 
+func (h *userView) Login(c *gin.Context) {
+	title := "Login Smart Voting"
+	c.HTML(http.StatusOK, "login.html", gin.H{"title": title})
+}
+
 func (h *userView) Dashboard(c *gin.Context) {
 	title := "Dashboard Smart Voting"
-	c.HTML(http.StatusOK, "dashboard.html", gin.H{"title": title})
+	c.HTML(http.StatusOK, "beranda.html", gin.H{"title": title})
 }
