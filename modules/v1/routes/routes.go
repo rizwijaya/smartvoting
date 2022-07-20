@@ -25,10 +25,10 @@ func Init(db *gorm.DB, conf config.Conf, router *gin.Engine) *gin.Engine {
 	// Routing Website Service
 	general := router.Group("/")
 	general.GET("/", userViewV1.Index)
-	//general.GET("/login", userViewV1.Login)
+	general.GET("/dashboard", userViewV1.Dashboard)
 
 	//Routing API Service
-	// api := router.Group("/api/v1")
+	//api := router.Group("/api/v1")
 
 	router = ParseTmpl(router)
 	return router

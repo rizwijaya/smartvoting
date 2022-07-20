@@ -25,6 +25,11 @@ func View(db *gorm.DB) *userView {
 }
 
 func (h *userView) Index(c *gin.Context) {
-	title := "Dashboard"
+	title := "Smart Voting"
+	c.HTML(http.StatusOK, "dashboard.html", gin.H{"title": title})
+}
+
+func (h *userView) Dashboard(c *gin.Context) {
+	title := "Dashboard Smart Voting"
 	c.HTML(http.StatusOK, "dashboard.html", gin.H{"title": title})
 }
