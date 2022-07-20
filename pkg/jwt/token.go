@@ -8,7 +8,7 @@ import (
 )
 
 func ValidateToken(encodedToken string) (*jwt.Token, error) {
-	var conf config.Conf
+	conf, _ := config.Init()
 	token, err := jwt.Parse(encodedToken, func(token *jwt.Token) (interface{}, error) {
 		_, ok := token.Method.(*jwt.SigningMethodHMAC)
 		if !ok {
@@ -26,13 +26,15 @@ func ValidateToken(encodedToken string) (*jwt.Token, error) {
 }
 
 func GenerateToken(userID int) (string, error) {
-	var conf config.Conf
+	conf, _ := config.Init()
+	SECRET_KEY := []byte(conf.App.Secret_key)
 	claim := jwt.MapClaims{}
 	claim["user_id"] = userID
 
 	token := jwt.NewWithClaims(jwt.SigningMethodHS256, claim)
 
-	signedToken, err := token.SignedString(conf.App.Secret_key)
+	signedToken, err := token.SignedString(SECRET_KEY)
+
 	if err != nil {
 		return signedToken, err
 	}
