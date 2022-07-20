@@ -75,6 +75,7 @@ contract Election {
 
     //------Admin------//
     ElectionDetails electionDetails;
+    // mapping(string => ElectionDetails) public detailPemilihan;
 
     function post_AdminCreatePemilihan(
         string memory _adminNama,
@@ -110,8 +111,8 @@ contract Election {
                 isVerified: false,
                 isRegistered: true
             });
-        detailPemilih[msg.sender] = newVoter;
-        voters.push(msg.sender);
+        detailPemilih[_address_public] = newVoter;
+        voters.push(_address_public);
         voterCount += 1;
     }
 
@@ -192,13 +193,22 @@ contract Election {
     }
     
     //Lakukan Pemilihan
-    function post_GeneralVote(uint256 candidateId) public {
-        require(detailPemilih[msg.sender].hasVoted == false);
-        require(detailPemilih[msg.sender].isVerified == true);
+    // function post_GeneralVote(uint256 candidateId) public {
+    //     require(detailPemilih[msg.sender].hasVoted == false);
+    //     require(detailPemilih[msg.sender].isVerified == true);
+    //     require(start == true);
+    //     require(end == false);
+    //     detailKandidat[candidateId].voteCount += 1;
+    //     detailPemilih[msg.sender].hasVoted = true;
+    // }
+
+    function post_votePemilih(uint256 candidateId, address voterAddress) public {
+        require(detailPemilih[voterAddress].hasVoted == false);
+        require(detailPemilih[voterAddress].isVerified == true);
         require(start == true);
         require(end == false);
         detailKandidat[candidateId].voteCount += 1;
-        detailPemilih[msg.sender].hasVoted = true;
+        detailPemilih[voterAddress].hasVoted = true;
     }
 
     //Mulai Pemilihan
