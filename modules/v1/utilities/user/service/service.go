@@ -10,6 +10,7 @@ import (
 
 type Service interface {
 	Login(input models.LoginInput) (models.User, error)
+	NewToken(token string) (string, error)
 }
 
 type service struct {
@@ -32,10 +33,24 @@ func (s *service) Login(input models.LoginInput) (models.User, error) {
 		return user, errors.New("Token yang ada masukkan salah!")
 	}
 
-	err = bcrypt.CompareHashAndPassword([]byte(user.Token), []byte(token))
-	if err != nil {
-		return user, errors.New("Token yang ada masukkan salah!")
-	}
+	// err = bcrypt.CompareHashAndPassword([]byte(user.Token), []byte(token))
+	// if err != nil {
+	// 	return user, errors.New("Token yang ada masukkan salah!")
+	// }
 
 	return user, nil
+}
+
+func (s *service) NewToken(token string) (string, error) {
+	tokenHash, err := bcrypt.GenerateFromPassword([]byte(token), bcrypt.MinCost)
+	if err != nil {
+		return "", err
+	}
+
+	token = string(tokenHash)
+	if err != nil {
+		return token, err
+	}
+
+	return token, err
 }

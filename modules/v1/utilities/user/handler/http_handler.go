@@ -49,7 +49,7 @@ func (h *userHandler) Login(c *gin.Context) {
 		return
 	}
 
-	//Generate JWT Token (Please Uncomment for Generate Token)
+	//Generate JWT Token
 	jwt, err := token.GenerateToken(user.User_id)
 	if err != nil {
 		log.Println(err) //Cetak log error
@@ -71,3 +71,36 @@ func (h *userHandler) Login(c *gin.Context) {
 
 	c.Redirect(http.StatusFound, "/dashboard")
 }
+
+func (h *userHandler) Logout(c *gin.Context) {
+	session := sessions.Default(c)
+	session.Clear()
+	session.Save()
+
+	http.SetCookie(c.Writer, &http.Cookie{
+		Name:   "message",
+		MaxAge: -1,
+	})
+
+	c.Redirect(http.StatusFound, "/login")
+}
+
+// func (h *userHandler) NewToken(c *gin.Context) {
+// 	var input models.LoginInput
+
+// 	err := c.ShouldBindJSON(&input)
+// 	if err != nil {
+// 		response := resp.APIRespon("Gagal membuat token", http.StatusNotAcceptable, "error", nil)
+// 		c.JSON(http.StatusNotAcceptable, response)
+// 		return
+// 	}
+// 	user, err := h.userService.NewToken(input.Token)
+// 	if err != nil {
+// 		response := resp.APIRespon("Gagal membuat token", http.StatusNotAcceptable, "error", nil)
+// 		c.JSON(http.StatusNotAcceptable, response)
+// 		return
+// 	}
+
+// 	response := resp.APIRespon("Berhasil membuat token", http.StatusOK, "success", user)
+// 	c.JSON(http.StatusOK, response)
+// }
