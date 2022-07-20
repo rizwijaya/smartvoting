@@ -6,9 +6,8 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # PARTICULAR PURPOSE.
 
 # This program built for i386-pc-mingw32
- 
 
-# Make data base, printed on Mon Jul 18 18:08:04 2022
+# Make data base, printed on Wed Jul 20 11:42:43 2022
 
 # Variables
 
@@ -16,8 +15,6 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 <D = $(patsubst %/,%,$(dir $<))
 # automatic
 ?F = $(notdir $?)
-# environment
-ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 COOKIECUTTER = C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.8_qbz5n2kfra8p0\LocalCache\local-packages\Python38\Scripts\cookiecutter.exe
 # makefile
@@ -53,23 +50,27 @@ PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
 # makefile (from `makefile', line 1)
 MAKEFILE_LIST :=  makefile
 # environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
+# environment
 TMP = C:\Users\RIZWIJ~1.LAP\AppData\Local\Temp
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 VSCODE_VERBOSE_LOGGING = true
 # environment
+ETHEREUM_SOCKET = \\.\pipe\geth.ipc
+# environment
 PROGRAMW6432 = C:\Program Files
 # environment
 PROGRAMDATA = C:\ProgramData
 # environment
-VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-525c8e2f-52c9-4a10-a05f-c07d5a633102-sock
+VSCODE_IPC_HOOK_EXTHOST = \\.\pipe\vscode-ipc-08bbd713-9bb3-4987-af91-0491a4a51aaf-sock
 # environment
-VSCODE_CWD = D:\master\Golangwork\src\smartvoting
+VSCODE_CWD = C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\Programs\Microsoft VS Code
 # environment
 GOPROXY = https://proxy.golang.org,direct
 # environment
-PATH = D:\master\Golang\bin;C:\Program Files (x86)\VMware\VMware Workstation\bin\;E:\Website\Database\WINDOWS.X64_193000_db_home\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php-8;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\TDM-GCC-64\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;D:\master\cmake;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\anaconda3\Library\bin;C:\Program Files\Java\jdk1.8.0_271\bin;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\GnuWin32\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\Microsoft\WindowsApps;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Roaming\npm;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\GitHubDesktop\bin;C:\Program Files\heroku\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\anaconda3\Library\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\anaconda3;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Roaming\Composer\vendor\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\go\bin
+PATH = D:\master\Golang\bin;C:\Program Files (x86)\VMware\VMware Workstation\bin\;E:\Website\Database\WINDOWS.X64_193000_db_home\bin;C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\PuTTY\;C:\xampp\php-8;C:\Program Files\Git\cmd;C:\Program Files\dotnet\;C:\Program Files\nodejs\;C:\TDM-GCC-64\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;D:\master\cmake;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\anaconda3\Library\bin;C:\Program Files\Java\jdk1.8.0_271\bin;C:\ProgramData\ComposerSetup\bin;C:\Program Files (x86)\GnuWin32\bin;C:\Program Files\Geth;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\Microsoft\WindowsApps;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Roaming\npm;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\GitHubDesktop\bin;C:\Program Files\heroku\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\anaconda3\Library\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\anaconda3;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Roaming\Composer\vendor\bin;C:\Users\rizwijaya.LAPTOP-BMMNV6QG\go\bin
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # environment
@@ -97,7 +98,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 GOBIN = D:\master\Golangwork\bin
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_3048_DVNHAQCNHWWLVDLV
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_5772_ELNPGYLJNSQNJZLP
 # environment
 VSCODE_PIPE_LOGGING = true
 # environment
@@ -114,8 +115,6 @@ USERNAME = rizwijaya
 PUBLIC = C:\Users\Public
 # environment
 GOMODCACHE = D:\master\Golangwork\pkg\mod
-# environment
-VSCODE_CLI = 1
 # environment
 VSCODE_CODE_CACHE_PATH = C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Roaming\Code\CachedData\30d9c6cd9483b2cc586687151bcbcd635f373630
 # environment
@@ -223,12 +222,13 @@ LANG = C
 # environment
 PROCESSOR_LEVEL = 6
 # environment
-VSCODE_PID = 3048
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
+# environment
+VSCODE_PID = 5772
 # environment
 USERDOMAIN_ROAMINGPROFILE = RIZQI
-# variable set hash-table s 
-tats:
-# Load=107/1024=10%, Rehash=0, Collisions=11/127=9%
+# variable set hash-table stats:
+# Load=108/1024=11%, Rehash=0, Collisions=11/128=9%
 
 # Pattern-specific Variable Values
 
@@ -241,7 +241,7 @@ tats:
 # C:\Program Files\Docker\Docker\resources\bin (key C:/Program Files/Docker/Docker/resources/bin, mtime 1621175667): 12 files, no impossibilities.
 # C:\Windows\System32\WindowsPowerShell\v1.0\ (key C:/Windows/System32/WindowsPowerShell/v1.0/, mtime 1652682785): 31 files, no impossibilities.
 # C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1657428380): 157 files, no impossibilities.
-# . (key d:/master/Golangwork/src/smartvoting, mtime 1658142472): 17 files, no impossibilities.
+# . (key d:/master/Golangwork/src/smartvoting, mtime 1658291847): 19 files, no impossibilities.
 # C:\Program Files\nodejs\ (key C:/Program Files/nodejs/, mtime 1608043669): 11 files, no impossibilities.
 # C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common (key C:/Program Files (x86)/NVIDIA Corporation/PhysX/Common, mtime 1598423392): 10 files, no impossibilities.
 # C:\Program Files\dotnet\ (key C:/Program Files/dotnet/, mtime 1604104474): 11 files, no impossibilities.
@@ -254,7 +254,7 @@ tats:
 # C:\Program Files (x86)\Common Files\Oracle\Java\javapath (key C:/Program Files (x86)/Common Files/Oracle/Java/javapath, mtime 1650023304): 5 files, no impossibilities.
 # C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/rizwijaya.LAPTOP-BMMNV6QG/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1655426044): 4 files, no impossibilities.
 # C:\Windows (key C:/Windows, mtime 1657428378): 150 files, no impossibilities.
-# C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Roaming\npm (key C:/Users/rizwijaya.LAPTOP-BMMNV6QG/AppData/Roaming/npm, mtime 1657616931): 15 files, no impossibilities.
+# C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Roaming\npm (key C:/Users/rizwijaya.LAPTOP-BMMNV6QG/AppData/Roaming/npm, mtime 1658203657): 18 files, no impossibilities.
 # C:\Program Files\Java\jdk1.8.0_271\bin (key C:/Program Files/Java/jdk1.8.0_271/bin, mtime 1605362680): 54 files, no impossibilities.
 # D:\master\cmake (key D:/master/cmake, mtime 1629888168): 29 files, no impossibilities.
 # C:\Users\rizwijaya.LAPTOP-BMMNV6QG\anaconda3 (key C:/Users/rizwijaya.LAPTOP-BMMNV6QG/anaconda3, mtime 1654091543): 86 files, no impossibilities.
@@ -262,16 +262,17 @@ tats:
 # C:\ProgramData\DockerDesktop\version-bin (key C:/ProgramData/DockerDesktop/version-bin, mtime 1621175747): 2 files, no impossibilities.
 # C:\xampp\php-8 (key C:/xampp/php-8, mtime 1653222446): 39 files, no impossibilities.
 # C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1603164098): 8 files, no impossibilities.
-# C:\Windows\system32 (key C:/Windows/system32, mtime 1658106180): 2897 files, no impossibilities.
+# C:\Windows\system32 (key C:/Windows/system32, mtime 1658278872): 2897 files, no impossibilities.
 # C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\GitHubDesktop\bin (key C:/Users/rizwijaya.LAPTOP-BMMNV6QG/AppData/Local/GitHubDesktop/bin, mtime 1599971240): 4 files, no impossibilities.
 # D:\master\Golang\bin (key D:/master/Golang/bin, mtime 1655515488): 4 files, no impossibilities.
+# C:\Program Files\Geth (key C:/Program Files/Geth, mtime 1658146453): 10 files, no impossibilities.
 # C:\Users\rizwijaya.LAPTOP-BMMNV6QG\AppData\Local\Microsoft\WindowsApps (key C:/Users/rizwijaya.LAPTOP-BMMNV6QG/AppData/Local/Microsoft/WindowsApps, mtime 1657968713): 46 files, no impossibilities.
 # C:\Program Files (x86)\Common Files\Intel\Shared Files\cpp\bin\Intel64 (key C:/Program Files (x86)/Common Files/Intel/Shared Files/cpp/bin/Intel64, mtime 1600307007): 14 files, no impossibilities.
 # C:\Users\rizwijaya.LAPTOP-BMMNV6QG\anaconda3\Library\bin (key C:/Users/rizwijaya.LAPTOP-BMMNV6QG/anaconda3/Library/bin, mtime 1654091543): 446 files, no impossibilities.
 # C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR (key C:/Program Files/NVIDIA Corporation/NVIDIA NvDLISR, mtime 1598423389): 5 files, no impossibilities.
 # C:\Program Files (x86)\GnuWin32\bin (key C:/Program Files (x86)/GnuWin32/bin, mtime 1656677327): 5 files, no impossibilities.
 
-# 4225 files, no impossibilities in 34 directories.
+# 4240 files, no impossibilities in 35 directories.
 
 # Implicit Rules
 
@@ -291,8 +292,7 @@ all:
 .PHONY: format install build
 #  Implicit rule search has not been done.
 #  Modification time never checked.
-# 
-  File has not been updated.
+#  File has not been updated.
 
 # Not a target:
 .DEFAULT:
@@ -315,10 +315,21 @@ start:
 	./main
 	
 
+sol:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `makefile', line 34):
+	@echo "Make Blockchain Script..."
+	solcjs --optimize --abi ./app/contracts/Election.sol -o build
+	solcjs --optimize --bin ./app/contracts/Election.sol -o build
+	abigen --abi=./build/app_contracts_election_sol_Election.abi --bin=./build/app_contracts_election_sol_Election.bin --pkg=api --out=./app/contracts/voting.go
+	
+
 # Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-01 22:30:28
+#  Last modified 2022-07-20 11:37:16
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -388,7 +399,7 @@ install:
 	
 
 # files hash-table stats:
-# Load=13/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=14/1024=1%, Rehash=0, Collisions=1/28=4%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -400,7 +411,7 @@ install:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
-# Finished Make data base on Mon Jul 18 18:08:04 2022
+# Finished Make data base on Wed Jul 20 11:42:43 2022
 
  
 make.exe: *** No rule to make target `all'.  Stop.

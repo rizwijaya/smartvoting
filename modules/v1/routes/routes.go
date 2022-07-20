@@ -2,8 +2,7 @@ package routes
 
 import (
 	"smartvoting/app/config"
-	productHandlerV1 "smartvoting/modules/v1/utilities/product/handler"
-	productviewV1 "smartvoting/modules/v1/utilities/product/view"
+	userViewV1 "smartvoting/modules/v1/utilities/user/view"
 	basic "smartvoting/pkg/basic_auth"
 
 	"github.com/gin-gonic/gin"
@@ -20,16 +19,16 @@ func ParseTmpl(router *gin.Engine) *gin.Engine { //Load HTML Template
 }
 
 func Init(db *gorm.DB, conf config.Conf, router *gin.Engine) *gin.Engine {
-	productHandlerV1 := productHandlerV1.Handler(db)
-	productViewV1 := productviewV1.View(db)
-
+	// votingHandlerV1 := votingHandlerV1.Handler(db)
+	// votingViewV1 := votingviewV1.View(db)
+	//userHandlerV1 := userHandlerV1.Handler(db)
+	userViewV1 := userViewV1.View(db)
 	// Routing Website Service
-	product := router.Group("/product", basic.Auth(conf))
-	product.GET("/", productViewV1.Index)
+	general := router.Group("/", basic.Auth(conf))
+	general.GET("/", userViewV1.Index)
 
 	//Routing API Service
-	api := router.Group("/api/v1")
-	api.GET("/product", productHandlerV1.ListProduct)
+	// api := router.Group("/api/v1")
 
 	router = ParseTmpl(router)
 	return router
