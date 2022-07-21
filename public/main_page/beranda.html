@@ -3,11 +3,19 @@
     <p>Smart Voting dengan teknologi Smart Contract berbasis BlockChain</p>
     <ul>
         <li>
-            <a href="/">Dashboard</a>
+            <a href="/logout">Logout</a>
         </li>
+        {{ range $i, $u := .user }}
         <li>
-            <a href="/login">Login</a>
+            <p>Token Pemilihan: {{ $u.VoterAddress }}</p>
+            <p>Nama : {{ $u.Name }}</p>
+            <p>Alamat: {{ $u.HomeAddress }}</p>
+            <p>Nomor HP: {{ $u.Phone }}</p>
+            <p>Verifikasi Pemilihan: {{ $u.IsVerified }}</p>
+            <p>Status Pemilihan: {{ $u.HasVoted }}</p>
+            <p>User Terdaftar: {{ $u.IsRegistered }}</p>
         </li>
+        {{ end }}
     </ul>
 </div>
 {{ end }}

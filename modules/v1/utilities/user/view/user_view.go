@@ -54,3 +54,9 @@ func (h *userView) Dashboard(c *gin.Context) {
 		"role":  session.Get("role"),
 	})
 }
+
+func (h *userView) AddUser(c *gin.Context) {
+	//session := sessions.Default(c)
+	title := "Tambah Pengguna - Smart Voting"
+	c.HTML(http.StatusOK, "adduser.html", gin.H{"title": title})
+}
