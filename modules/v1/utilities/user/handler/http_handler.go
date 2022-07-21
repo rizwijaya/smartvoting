@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"smartvoting/app/blockchain"
+	"smartvoting/app/config"
 	"smartvoting/modules/v1/utilities/user/models"
 	ss "smartvoting/modules/v1/utilities/user/service"
 	token "smartvoting/pkg/jwt"
@@ -108,8 +110,10 @@ func (h *userHandler) Logout(c *gin.Context) {
 // }
 
 func (h *userHandler) AddUser(c *gin.Context) {
+	conf, _ := config.Init()
 	//session := sessions.Default(c)
 	var input models.NewUser
+
 	err := c.ShouldBind(&input)
 	if err != nil {
 		log.Println(err) //Print log error
@@ -119,8 +123,8 @@ func (h *userHandler) AddUser(c *gin.Context) {
 		})
 		return
 	}
-
-	_, err = h.userService.NewUser(input)
+	auth := blockchain.GetAccountAuth(blockchain.Connect(), conf.Blockhain.Secret_key)
+	_, err = h.userService.NewUser(input, auth)
 	if err != nil {
 		fmt.Println("Gagal menambahkan user")
 		c.HTML(http.StatusOK, "adduser.html", gin.H{

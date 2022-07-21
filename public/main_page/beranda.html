@@ -5,17 +5,15 @@
         <li>
             <a href="/logout">Logout</a>
         </li>
-        {{ range $i, $u := .user }}
         <li>
-            <p>Token Pemilihan: {{ $u.VoterAddress }}</p>
-            <p>Nama : {{ $u.Name }}</p>
-            <p>Alamat: {{ $u.HomeAddress }}</p>
-            <p>Nomor HP: {{ $u.Phone }}</p>
-            <p>Verifikasi Pemilihan: {{ $u.IsVerified }}</p>
-            <p>Status Pemilihan: {{ $u.HasVoted }}</p>
-            <p>User Terdaftar: {{ $u.IsRegistered }}</p>
+            <p>Token Pemilihan: {{ .user.VoterAddress }}</p>
+            <p>Nama : {{ .user.Name }}</p>
+            <p>Alamat: {{ .user.HomeAddress }}</p>
+            <p>Nomor HP: {{ .user.Phone }}</p>
+            <p>Verifikasi Pemilihan: {{ .user.IsVerified }}</p>
+            <p>Status Pemilihan: {{ .user.HasVoted }}</p>
+            <p>User Terdaftar: {{ .user.IsRegistered }}</p>
         </li>
-        {{ end }}
     </ul>
 </div>
 {{ end }}

@@ -19,7 +19,7 @@ type Service interface {
 	NewToken(token string) (string, error)
 	GetUserAddress(id string) (string, error)
 	GetUserData(address string) (models.UserData, error)
-	NewUser(input models.NewUser) (*types.Transaction, error)
+	NewUser(input models.NewUser, key *bind.TransactOpts) (*types.Transaction, error)
 }
 
 type service struct {
@@ -84,7 +84,7 @@ func (s *service) GetUserData(address string) (models.UserData, error) {
 	return userData, nil
 }
 
-func (s *service) NewUser(input models.NewUser) (*types.Transaction, error) {
+func (s *service) NewUser(input models.NewUser, key *bind.TransactOpts) (*types.Transaction, error) {
 	user := models.User{}
 	user.Role_id = 2
 	user.Token = random.String(14)
@@ -96,7 +96,7 @@ func (s *service) NewUser(input models.NewUser) (*types.Transaction, error) {
 	}
 
 	userAddress := common.HexToAddress(input.Address)
-	userData, err := s.blockchain.PostAdminPemilihBaru(&bind.TransactOpts{}, userAddress, input.Nama, input.Alamat, input.Nomor)
+	userData, err := s.blockchain.PostAdminPemilihBaru(key, userAddress, input.Nama, input.Alamat, input.Nomor)
 	if err != nil {
 		log.Println(err) //Print log error
 		return userData, err
