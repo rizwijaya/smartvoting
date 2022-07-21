@@ -1,13 +1,17 @@
 package voting
 
 import (
-	"smartvoting/modules/v1/utilities/voting/repository"
+	"log"
+	"net/http"
+	"smartvoting/app/blockchain"
+	"smartvoting/modules/v1/utilities/voting/models"
 	"smartvoting/modules/v1/utilities/voting/service"
 
-	"gorm.io/gorm"
+	"github.com/gin-gonic/gin"
 )
 
 type VotingHandler interface {
+	CreateElection(c *gin.Context)
 }
 
 type votingHandler struct {
@@ -18,9 +22,41 @@ func NewVotingHandler(votingService service.Service) *votingHandler {
 	return &votingHandler{votingService}
 }
 
-func Handler(db *gorm.DB) *votingHandler {
-	Repository := repository.NewRepository(db)
-	Service := service.NewService(Repository)
-	Handler := NewVotingHandler(Service)
-	return Handler
+func (h *votingHandler) CreateElection(c *gin.Context) {
+	var input models.NewElection
+
+	err := c.ShouldBindJSON(&input)
+	if err != nil {
+		log.Println(err)
+		c.HTML(http.StatusConflict, "create_election.html", gin.H{
+			"title":   "Buat Event Pemilihan - Smart Voting",
+			"message": "Gagal menambahkan event pemilihan",
+		})
+		return
+	}
+
+	secretKey, err := h.votingService.GetServerKey(input.Server)
+	if err != nil {
+		log.Println(err)
+		c.HTML(http.StatusConflict, "create_election.html", gin.H{
+			"title":   "Buat Event Pemilihan - Smart Voting",
+			"message": "Gagal menambahkan event pemilihan",
+		})
+		return
+	}
+
+	auth := blockchain.GetAccountAuth(blockchain.Connect(), secretKey)
+	_, err = h.votingService.CreateElection(input, auth)
+	if err != nil {
+		log.Println(err)
+		c.HTML(http.StatusConflict, "create_election.html", gin.H{
+			"title":   "Buat Event Pemilihan - Smart Voting",
+			"message": "Gagal menambahkan event pemilihan",
+		})
+		return
+	}
+	c.HTML(http.StatusOK, "create_election.html", gin.H{
+		"title":   "Buat Event Pemilihan - Smart Voting",
+		"message": "Berhasil menambahkan event pemilihan",
+	})
 }

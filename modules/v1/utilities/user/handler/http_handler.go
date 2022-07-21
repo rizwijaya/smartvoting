@@ -1,7 +1,6 @@
 package user
 
 import (
-	"fmt"
 	"log"
 	"net/http"
 	"smartvoting/app/blockchain"
@@ -17,7 +16,8 @@ import (
 
 type UserHandler interface {
 	Login(c *gin.Context)
-	GetUserAddress(id string) (string, error)
+	Logout(c *gin.Context)
+	AddUser(c *gin.Context)
 }
 
 type userHandler struct {
@@ -117,7 +117,7 @@ func (h *userHandler) AddUser(c *gin.Context) {
 	err := c.ShouldBind(&input)
 	if err != nil {
 		log.Println(err) //Print log error
-		c.HTML(http.StatusOK, "adduser.html", gin.H{
+		c.HTML(http.StatusConflict, "adduser.html", gin.H{
 			"title":   "Tambah Pengguna - Smart Voting",
 			"message": "Gagal menambahkan pengguna!",
 		})
@@ -126,14 +126,15 @@ func (h *userHandler) AddUser(c *gin.Context) {
 	auth := blockchain.GetAccountAuth(blockchain.Connect(), conf.Blockhain.Secret_key)
 	_, err = h.userService.NewUser(input, auth)
 	if err != nil {
-		fmt.Println("Gagal menambahkan user")
-		c.HTML(http.StatusOK, "adduser.html", gin.H{
+		log.Println(err) //Print log error
+		//fmt.Println("Gagal menambahkan user")
+		c.HTML(http.StatusConflict, "adduser.html", gin.H{
 			"title":   "Tambah Pengguna - Smart Voting",
 			"message": "Gagal menambahkan pengguna!",
 		})
 		return
 	}
-	fmt.Println("Berhasil menambahkan user")
+	//fmt.Println("Berhasil menambahkan user")
 	c.HTML(http.StatusOK, "adduser.html", gin.H{
 		"title":   "Tambah Pengguna - Smart Voting",
 		"message": "Berhasil menambahkan pengguna!",
