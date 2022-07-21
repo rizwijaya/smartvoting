@@ -9,6 +9,7 @@ import (
 type Repository interface {
 	FindByToken(token string) (models.User, error)
 	GetUserAddress(id string) (string, error)
+	NewUser(input models.User) error
 }
 
 type repository struct {
@@ -35,4 +36,12 @@ func (r *repository) GetUserAddress(id string) (string, error) {
 		return address, err
 	}
 	return address, nil
+}
+
+func (r *repository) NewUser(input models.User) error {
+	err := r.db.Create(&input).Error
+	if err != nil {
+		return err
+	}
+	return nil
 }

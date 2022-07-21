@@ -2,12 +2,15 @@ package service
 
 import (
 	"errors"
+	"log"
 	api "smartvoting/app/contracts"
 	"smartvoting/modules/v1/utilities/user/models"
 	"smartvoting/modules/v1/utilities/user/repository"
 
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
 	"github.com/ethereum/go-ethereum/common"
+	"github.com/ethereum/go-ethereum/core/types"
+	"github.com/labstack/gommon/random"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -16,6 +19,7 @@ type Service interface {
 	NewToken(token string) (string, error)
 	GetUserAddress(id string) (string, error)
 	GetUserData(address string) (models.UserData, error)
+	NewUser(input models.NewUser) (*types.Transaction, error)
 }
 
 type service struct {
@@ -77,5 +81,25 @@ func (s *service) GetUserData(address string) (models.UserData, error) {
 		return userData, err
 	}
 
+	return userData, nil
+}
+
+func (s *service) NewUser(input models.NewUser) (*types.Transaction, error) {
+	user := models.User{}
+	user.Role_id = 2
+	user.Token = random.String(14)
+	user.Address = input.Address
+
+	err := s.repository.NewUser(user)
+	if err != nil {
+		return nil, err
+	}
+
+	userAddress := common.HexToAddress(input.Address)
+	userData, err := s.blockchain.PostAdminPemilihBaru(&bind.TransactOpts{}, userAddress, input.Nama, input.Alamat, input.Nomor)
+	if err != nil {
+		log.Println(err) //Print log error
+		return userData, err
+	}
 	return userData, nil
 }

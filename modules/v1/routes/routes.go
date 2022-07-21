@@ -1,6 +1,7 @@
 package routes
 
 import (
+	"smartvoting/app/blockchain"
 	"smartvoting/app/config"
 	userHandlerV1 "smartvoting/modules/v1/utilities/user/handler"
 	userViewV1 "smartvoting/modules/v1/utilities/user/view"
@@ -19,10 +20,11 @@ func ParseTmpl(router *gin.Engine) *gin.Engine { //Load HTML Template
 }
 
 func Init(db *gorm.DB, conf config.Conf, router *gin.Engine) *gin.Engine {
+	blockchain := blockchain.Init(conf)
 	// votingHandlerV1 := votingHandlerV1.Handler(db)
 	// votingViewV1 := votingviewV1.View(db)
-	userHandlerV1 := userHandlerV1.Handler(db)
-	userViewV1 := userViewV1.View(db)
+	userHandlerV1 := userHandlerV1.Handler(db, blockchain)
+	userViewV1 := userViewV1.View(db, blockchain)
 	// Routing Website Service
 	general := router.Group("/")
 	general.GET("/", userViewV1.Index)
@@ -30,6 +32,8 @@ func Init(db *gorm.DB, conf config.Conf, router *gin.Engine) *gin.Engine {
 	general.GET("/login", userViewV1.Login)
 	general.POST("/login", userHandlerV1.Login)
 	general.GET("/logout", userHandlerV1.Logout)
+	general.GET("/add-user", userViewV1.AddUser)
+	general.POST("/add-user", userHandlerV1.AddUser)
 	//Routing API Service
 	//api := router.Group("/api/v1")
 	//api.POST("/newtoken", userHandlerV1.NewToken)

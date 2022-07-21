@@ -1,6 +1,7 @@
 package user
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"smartvoting/modules/v1/utilities/user/models"
@@ -14,6 +15,7 @@ import (
 
 type UserHandler interface {
 	Login(c *gin.Context)
+	GetUserAddress(id string) (string, error)
 }
 
 type userHandler struct {
@@ -104,3 +106,32 @@ func (h *userHandler) Logout(c *gin.Context) {
 // 	response := resp.APIRespon("Berhasil membuat token", http.StatusOK, "success", user)
 // 	c.JSON(http.StatusOK, response)
 // }
+
+func (h *userHandler) AddUser(c *gin.Context) {
+	//session := sessions.Default(c)
+	var input models.NewUser
+	err := c.ShouldBind(&input)
+	if err != nil {
+		log.Println(err) //Print log error
+		c.HTML(http.StatusOK, "adduser.html", gin.H{
+			"title":   "Tambah Pengguna - Smart Voting",
+			"message": "Gagal menambahkan pengguna!",
+		})
+		return
+	}
+
+	_, err = h.userService.NewUser(input)
+	if err != nil {
+		fmt.Println("Gagal menambahkan user")
+		c.HTML(http.StatusOK, "adduser.html", gin.H{
+			"title":   "Tambah Pengguna - Smart Voting",
+			"message": "Gagal menambahkan pengguna!",
+		})
+		return
+	}
+	fmt.Println("Berhasil menambahkan user")
+	c.HTML(http.StatusOK, "adduser.html", gin.H{
+		"title":   "Tambah Pengguna - Smart Voting",
+		"message": "Berhasil menambahkan pengguna!",
+	})
+}
