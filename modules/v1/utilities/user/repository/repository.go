@@ -8,6 +8,7 @@ import (
 
 type Repository interface {
 	FindByToken(token string) (models.User, error)
+	GetUserAddress(id string) (string, error)
 }
 
 type repository struct {
@@ -25,4 +26,13 @@ func (r *repository) FindByToken(token string) (models.User, error) {
 		return user, err
 	}
 	return user, nil
+}
+
+func (r *repository) GetUserAddress(id string) (string, error) {
+	var address string
+	err := r.db.Raw("SELECT address FROM users WHERE user_id = ?", id).Find(&address).Error
+	if err != nil {
+		return address, err
+	}
+	return address, nil
 }
